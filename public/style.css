@@ -1,0 +1,128 @@
+/* Базовые стили */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    color: #334e68;
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px; /* Ограничиваем ширину для больших экранов */
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: #102a43;
+    text-align: center;
+}
+
+/* Секция ввода - Адаптивный Flexbox */
+.input-section {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #d9e2ec;
+    border-radius: 10px;
+    font-size: 16px; /* Важно для мобильных (чтобы не было зума) */
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #627d98;
+}
+
+button {
+    background: #486581;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #243b53;
+}
+
+/* Сетка слов - Адаптивные колонки */
+.word-grid {
+    display: grid;
+    /* По умолчанию: 1 колонка на очень маленьких экранах */
+    grid-template-columns: 1fr; 
+    gap: 15px;
+}
+
+.word-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    border-left: 5px solid #829ab1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.word-card b {
+    color: #102a43;
+    word-break: break-all;
+}
+
+/* --- Адаптивность (Медиа-запросы) --- */
+
+/* Планшеты (от 600px) */
+@media (min-width: 600px) {
+    .word-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    }
+}
+
+/* Компьютеры (от 900px) */
+@media (min-width: 900px) {
+    .word-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    }
+}
+
+/* Мобильные устройства (до 599px) */
+@media (max-width: 599px) {
+    .input-section {
+        flex-direction: column; /* Элементы ввода встают друг под друга */
+        padding: 15px;
+    }
+    
+    button {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    body {
+        padding: 10px;
+    }
+}
